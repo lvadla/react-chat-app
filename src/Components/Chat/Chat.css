@@ -1,0 +1,16 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+}
+.chat-container {
+  overflow-y: auto;
+}
+
+.chat-title {
+  text-align: center;
+  margin: 1rem 0;
+  font-weight: 300;
+}
