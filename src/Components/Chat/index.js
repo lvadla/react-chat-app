@@ -7,27 +7,27 @@ export default function Chat() {
   const endOfMessages = useRef();
 
   useEffect(() => {
-    endOfMessages.current.scrollIntoView({ behavior: 'smooth' });
+    endOfMessages.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, [])
 
   return (
     <div className="chat">
-      <h1 className="chat-title">Status Meeting Standup</h1>
+      <div className="chat-body">
+        <div className="messages-container">
+          <Message username="Michel Sagen" canBeChanged={true} />
+          <Message username="Meetingbot" canBeChanged={false} />
+          <Message username="Meetingbot" canBeChanged={false} />
+          <Message username="Lars Bergendahl" canBeChanged={false} />
+          <Message username="Tom Erik Lia" canBeChanged={false} />
+          <Message username="Meetingbot" canBeChanged={false} />
+          <Message username="Krzysztof Grzeslo" canBeChanged={false} />
+          <Message username="Michel Sagen" canBeChanged={true} />
+          <div className="end-of-messages" ref={endOfMessages}></div>
+        </div>
 
-      <div className="chat-container">
-        <Message username="Michel Sagen" canBeChanged={true} />
-        <Message username="Meetingbot" canBeChanged={false} />
-        <Message username="Meetingbot" canBeChanged={false} />
-        <Message username="Lars Bergendahl" canBeChanged={false} />
-        <Message username="Tom Erik Lia" canBeChanged={false} />
-        <Message username="Meetingbot" canBeChanged={false} />
-        <Message username="Krzysztof Grzeslo" canBeChanged={false} />
-        <Message username="Michel Sagen" canBeChanged={true} />
-        <div ref={endOfMessages}></div>
       </div>
-
-      <div className="chat-input">
-        <input></input>
+      <div className="chat-footer">
+        <input className="chat-input" placeholder="Message"></input>
       </div>
     </div>
   );

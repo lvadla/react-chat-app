@@ -12,7 +12,7 @@ function MessageButtons({
   deleteHandler
 }) {
   return (
-    <div className="message-buttons">
+    <div className="message-button-group">
       {!isDeleted && (messageStatus.isEditing ? (
         <>
           <MessageButton

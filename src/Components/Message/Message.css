@@ -1,7 +1,9 @@
+.message-container:first-child {
+  margin: auto 0 0 0;
+}
+
 .message-container {
-  background-color: white;
-  box-shadow: 0 2px 40px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+  padding: .5rem;
 }
 
 .message-header-container {
@@ -38,6 +40,10 @@
   padding: 0.25rem;
   resize: none;
   width: 100%;
+  font-size: 1rem;
+  font-family: sans-serif;
+  line-height: 1.75;
+  letter-spacing: .5px;
 }
 
 .message-content.ambient {

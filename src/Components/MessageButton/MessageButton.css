@@ -2,7 +2,7 @@
 /* (aria concerns) */
 .message-container:hover
   > .message-header-container
-  > .message-buttons
+  > .message-button-group
   > .message-button {
   color: #333;
 }
