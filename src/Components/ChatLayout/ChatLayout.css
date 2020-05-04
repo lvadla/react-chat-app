@@ -6,11 +6,18 @@
   flex-direction: column;
   height: 100%;
   margin: 0 auto;
-  max-width: 450px;
+  width: 650px;
+  min-width: 200px;
 }
 
 .chat-title {
   margin: 1rem 0;
   font-weight: 500;
   font-size: 1.125rem;
+}
+
+@media (max-width: 675px) {
+  .chat-layout {
+    width: 100%;
+  }
 }

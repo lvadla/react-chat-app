@@ -1,0 +1,19 @@
+.participants {
+  background-color: white;
+  border-radius: .25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  letter-spacing: .5px;
+  overflow-y: auto;
+}
+
+.participant {
+  border-bottom: 1px solid #ebebeb;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.participant-name {
+  margin: 0 auto;
+}
