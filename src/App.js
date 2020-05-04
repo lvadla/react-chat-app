@@ -1,9 +1,9 @@
 import React from 'react';
-import Chat from "./Components/Chat";
+import ChatLayout from "./Components/ChatLayout";
 
 function App() {
   return (
-    <Chat />
+    <ChatLayout />
   );
 }
 

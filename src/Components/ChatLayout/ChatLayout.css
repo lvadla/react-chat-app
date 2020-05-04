@@ -1,0 +1,16 @@
+.chat-layout {
+  background-color: #ebebeb;
+  border-radius: .25rem;
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 450px;
+}
+
+.chat-title {
+  margin: 1rem 0;
+  font-weight: 500;
+  font-size: 1.125rem;
+}
