@@ -16,9 +16,10 @@
 }
 
 .messages-container {
-  min-height: min-content;
   display: flex;
   flex-flow: column nowrap;
+  min-height: min-content;
+  width: 100%;
 }
 
 .chat-footer {

@@ -1,14 +1,17 @@
 import React from "react";
 import Tabs from '../Tabs';
+import { UserContextProvider } from '../../Context/UserContext.js'
 
 import "./ChatLayout.css";
 
-function ChatLayout() {
+function ChatLayout({ userName }) {
   return (
-    <div className="chat-layout">
-      <h1 className="chat-title">Status Meeting Standup</h1>
-      <Tabs />
-    </div>
+    <UserContextProvider value={userName}>
+      <div className="chat-layout">
+        <h1 className="chat-title">Status Meeting Standup</h1>
+        <Tabs />
+      </div>
+    </UserContextProvider>
   )
 }
 

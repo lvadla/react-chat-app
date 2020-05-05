@@ -38,11 +38,7 @@ function Tabs() {
           <p className="tab-name">Chat</p>
         </div>
       </div>
-      {currentTab === tabs.chat ? (
-        <Chat />
-      ) : (
-          <Participants />
-        )}
+      {currentTab === tabs.chat ? (<Chat />) : (<Participants />)}
     </>
   );
 }
