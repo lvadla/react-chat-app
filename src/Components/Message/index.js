@@ -6,20 +6,25 @@ import MessageButtonGroup from "../MessageButtonGroup";
 
 import "./Message.css";
 
-export default function Message({ canBeChanged, username }) {
+export default function Message({ canBeChanged, message, time, userName }) {
   const [isDeleted, setIsDeleted] = useState(false);
   const [messageStatus, setMessageStatus] = useState({
     isEditing: false,
     hasChanged: false
   });
-  const [messageContent, setMessageContent] = useState(
-    `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis minima amet vero nemo, in dolorum voluptates modi recusandae, ducimus ipsum nisi iste corrupti? Ducimus repellat, ea iusto aut voluptate hic?`
-  );
+  const [messageContent, setMessageContent] = useState(message);
   const [proposedText, setProposedText] = useState(messageContent);
+
+  const timeFormat = new Intl.DateTimeFormat("en", {
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+  const formattedTime = timeFormat.format(time);
 
   const contentClasses = clsx(
     "message-content",
-    username === "Meetingbot" && " ambient"
+    userName === "Meetingbot" && "ambient"
   );
 
   const handleMessageDelete = () => {
@@ -89,9 +94,9 @@ export default function Message({ canBeChanged, username }) {
   return (
     <div className="message-container">
       <div className="message-header-container">
-        <p className="message-title">{username}</p>
+        <p className="message-title">{userName}</p>
 
-        <span className="message-time">15:24</span>
+        <span className="message-time">{formattedTime}</span>
 
         {canBeChanged && <MessageButtonGroup
           isDeleted={isDeleted}

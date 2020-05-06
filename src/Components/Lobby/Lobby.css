@@ -19,8 +19,8 @@
 }
 
 .lobby-label {
-  flex: 0 1 45%;
-  padding: 0 1rem 0 0;
+  flex: 0 1 40%;
+  text-align: left;
 }
 
 .lobby-input {
