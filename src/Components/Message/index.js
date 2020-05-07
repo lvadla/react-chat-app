@@ -6,12 +6,17 @@ import MessageButtonGroup from "../MessageButtonGroup";
 
 import "./Message.css";
 
-export default function Message({ canBeChanged, message, time, userName }) {
-  const [isDeleted, setIsDeleted] = useState(false);
-  const [messageStatus, setMessageStatus] = useState({
-    isEditing: false,
-    hasChanged: false
-  });
+export default function Message({
+  canBeChanged,
+  deleted,
+  edited,
+  index,
+  message,
+  updateMessage,
+  time,
+  userName
+}) {
+  const [isEditing, setIsEditing] = useState(false);
   const [messageContent, setMessageContent] = useState(message);
   const [proposedText, setProposedText] = useState(messageContent);
 
@@ -28,11 +33,12 @@ export default function Message({ canBeChanged, message, time, userName }) {
   );
 
   const handleMessageDelete = () => {
-    setIsDeleted(true);
+    const deletedMsg = ''
+    updateMessage('delete', deletedMsg, index)
   };
 
   const handleMessageEdit = () => {
-    setMessageStatus(prev => ({ ...prev, isEditing: true }));
+    setIsEditing(true);
   };
 
   const handleMessageChange = e => {
@@ -40,17 +46,19 @@ export default function Message({ canBeChanged, message, time, userName }) {
   };
 
   const handleMessageConfirm = () => {
-    if (messageContent.trim() !== proposedText.trim()) {
-      setMessageContent(proposedText.trim());
-      setMessageStatus({ hasChanged: true, isEditing: false });
+    const trimmedText = proposedText.trim();
+    if (messageContent.trim() !== trimmedText) {
+      setMessageContent(trimmedText);
+      updateMessage('edit', trimmedText, index)
+      setIsEditing(false);
     } else {
       setProposedText(prev => prev.trim());
-      setMessageStatus({ hasChanged: false, isEditing: false });
+      setIsEditing(false);
     }
   };
 
   const handleMessageCancel = () => {
-    setMessageStatus(prev => ({ ...prev, isEditing: false }));
+    setIsEditing(false);
     setProposedText(messageContent);
   };
 
@@ -60,7 +68,7 @@ export default function Message({ canBeChanged, message, time, userName }) {
     }
   };
 
-  const contentSection = messageStatus.isEditing ? (
+  const contentSection = isEditing ? (
     <TextareaAutosize
       id="edit-message-text-area"
       type="text"
@@ -72,16 +80,15 @@ export default function Message({ canBeChanged, message, time, userName }) {
     />
   ) : (
       <p className={contentClasses}>
-        {messageContent}
-        {messageStatus.hasChanged && <span className="message-edited">(edited)</span>}
+        {message}
+        {edited && <span className="message-edited">(edited)</span>}
       </p>
     );
 
   useEffect(function listenToEscapeKey() {
     function listenToEscapeKey(e) {
-      if (messageStatus.isEditing && e.keyCode === 27) {
-        setMessageStatus(prev => ({ ...prev, isEditing: false }));
-        setProposedText(messageContent);
+      if (isEditing && e.keyCode === 27) {
+        handleMessageCancel();
       }
     };
     document.addEventListener("keydown", listenToEscapeKey);
@@ -99,8 +106,8 @@ export default function Message({ canBeChanged, message, time, userName }) {
         <span className="message-time">{formattedTime}</span>
 
         {canBeChanged && <MessageButtonGroup
-          isDeleted={isDeleted}
-          messageStatus={messageStatus}
+          isDeleted={deleted}
+          isEditing={isEditing}
           confirmHandler={handleMessageConfirm}
           cancelHandler={handleMessageCancel}
           editHandler={handleMessageEdit}
@@ -108,7 +115,7 @@ export default function Message({ canBeChanged, message, time, userName }) {
         />}
       </div>
 
-      {isDeleted ? (
+      {deleted ? (
         <p className="message-content ambient">
           This message has been deleted. <span role="img" aria-label="trash emoji">🗑️</span>
         </p>

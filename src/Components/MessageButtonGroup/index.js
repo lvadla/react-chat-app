@@ -5,7 +5,7 @@ import "./MessageButtonGroup.css";
 
 function MessageButtons({
   isDeleted,
-  messageStatus,
+  isEditing,
   confirmHandler,
   cancelHandler,
   editHandler,
@@ -13,7 +13,7 @@ function MessageButtons({
 }) {
   return (
     <div className="message-button-group">
-      {!isDeleted && (messageStatus.isEditing ? (
+      {!isDeleted && (isEditing ? (
         <>
           <MessageButton
             type={buttonTypes.confirm}
