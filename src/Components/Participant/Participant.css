@@ -1,0 +1,9 @@
+.participant {
+  border-bottom: 1px solid #ebebeb;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.participant-name {
+  margin: 0 auto;
+}

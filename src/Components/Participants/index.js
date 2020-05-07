@@ -1,21 +1,13 @@
 import React from "react";
+import Participant from "../Participant";
 
 import "./Participants.css";
 
-const participants = [
-  'John Lennon',
-  'John Watson',
-  'Sherlock Holmes',
-  'Mary Poppins'
-]
-
-function Participants() {
+function Participants({ clients }) {
   return (
     <div className="participants">
-      {participants.map(participant => (
-        <div className="participant">
-          <p className="participant-name">{participant}</p>
-        </div>
+      {clients.map((client, key) => (
+        <Participant key={key} participant={client} />
       ))}
     </div>
   )

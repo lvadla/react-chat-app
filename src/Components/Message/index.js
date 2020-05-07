@@ -85,7 +85,7 @@ export default function Message({
       </p>
     );
 
-  useEffect(function listenToEscapeKey() {
+  useEffect(function () {
     function listenToEscapeKey(e) {
       if (isEditing && e.keyCode === 27) {
         handleMessageCancel();
