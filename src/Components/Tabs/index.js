@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 
-import Chat from "../Chat";
-import Participants from "../Participants";
-
 import "./Tabs.css";
 
 const tabs = {
@@ -11,7 +8,7 @@ const tabs = {
   participants: 'participants'
 }
 
-function Tabs() {
+function Tabs({ children }) {
   const [currentTab, setCurrentTab] = useState(tabs.chat);
 
   const handleChatSelection = () => {
@@ -38,7 +35,7 @@ function Tabs() {
           <p className="tab-name">Chat</p>
         </div>
       </div>
-      {currentTab === tabs.chat ? (<Chat />) : (<Participants />)}
+      {currentTab === tabs.chat ? children[0] : children[1]}
     </>
   );
 }
