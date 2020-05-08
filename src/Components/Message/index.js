@@ -50,11 +50,10 @@ export default function Message({
     if (messageContent.trim() !== trimmedText) {
       setMessageContent(trimmedText);
       updateMessage('edit', trimmedText, index)
-      setIsEditing(false);
     } else {
       setProposedText(prev => prev.trim());
-      setIsEditing(false);
     }
+    setIsEditing(false);
   };
 
   const handleMessageCancel = () => {
@@ -120,8 +119,8 @@ export default function Message({
           This message has been deleted. <span role="img" aria-label="trash emoji">🗑️</span>
         </p>
       ) : (
-          contentSection
-        )}
+        contentSection
+      )}
     </div>
   );
 }
