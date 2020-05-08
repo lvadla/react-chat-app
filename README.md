@@ -9,6 +9,7 @@ To successfully run this locally, you will need to complete three steps:
 git clone https://github.com/lvadla/react-chat-app-server.git
 cd react-chat-app
 
+# local network address would also work
 echo ws://myComputerName.local:443 >> .env
 ```
 
